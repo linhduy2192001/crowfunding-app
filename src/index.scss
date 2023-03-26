@@ -9,3 +9,11 @@
     @apply outline-none;
   }
 }
+
+input:focus + .error-input {
+  display: none;
+}
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

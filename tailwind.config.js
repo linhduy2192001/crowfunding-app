@@ -19,7 +19,7 @@ module.exports = {
         graySoft: "FCFCFC",
         strock: "#F1F1F3",
         lite: "#FCFCFD",
-        error: "EB5757",
+        error: "#EB5757",
         darkbg: "#13131A",
         darkSecondary: "#1C1C24",
         softDark: "#22222C",
