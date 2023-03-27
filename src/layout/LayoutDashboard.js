@@ -1,14 +1,17 @@
 import React from "react";
+import Overlay from "../components/common/Overlay";
 import DashboardSidebar from "../modules/dashboard/DashboardSidebar";
 import DashboardTopbar from "../modules/dashboard/DashboardTopbar";
 
 const LayoutDashboard = ({ children }) => {
   return (
-    <div className="p-10 bg-lite">
+    <div className="min-h-screen p-10 bg-lite ">
+      {/* <div className="fixed inset-0 z-40 bg-black overlay bg-opacity-10"></div> */}
+      <Overlay></Overlay>
       <DashboardTopbar></DashboardTopbar>
-      <div>
+      <div className="flex items-start gap-x-10">
         <DashboardSidebar></DashboardSidebar>
-        <div> {children}</div>
+        <div className="flex-1"> {children}</div>
       </div>
     </div>
   );

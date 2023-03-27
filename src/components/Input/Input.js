@@ -60,5 +60,5 @@ Input.propTypes = {
 };
 
 export default withErrorBoundary(Input, {
-  FallbackComponent: <ErrorComponent></ErrorComponent>,
+  FallbackComponent: ErrorComponent,
 });

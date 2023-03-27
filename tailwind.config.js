@@ -16,7 +16,7 @@ module.exports = {
         "icon-color": "#A2A2A8",
         white: "#fff",
         whiteSoft: "#FCFBFF",
-        graySoft: "FCFCFC",
+        graySoft: "#FCFCFC",
         strock: "#F1F1F3",
         lite: "#FCFCFD",
         error: "#EB5757",
@@ -26,6 +26,9 @@ module.exports = {
         darkSoft: "#24242C",
         darkStroke: "#3A3A43",
         darkRed: "#422C32",
+      },
+      boxShadow: {
+        sdprimary: "10px 10px 20px rgba(211, 211, 211, 0.25) ",
       },
     },
   },
