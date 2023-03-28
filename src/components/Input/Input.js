@@ -20,7 +20,6 @@ const Input = (props) => {
     name,
     defaultValue: "",
   });
-  console.log("error", error);
   return (
     <div className="relative">
       {" "}

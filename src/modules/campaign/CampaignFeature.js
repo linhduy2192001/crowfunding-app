@@ -7,7 +7,7 @@ import CampTitle from "./parts/CampTitle";
 
 const CampaignFeature = () => {
   return (
-    <div className="flex items-center w-full gap-x-8 max-w-[1048px]">
+    <div className="flex items-center w-full gap-x-[30px] max-w-[1048px]">
       <CampImage className="h-[266px] flex flex-1 "></CampImage>
       <div className=" flex-1 max-w-[435px]">
         <CampCatergory text="Architecture" className="text-sm "></CampCatergory>
