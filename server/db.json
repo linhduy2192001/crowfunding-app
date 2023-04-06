@@ -1,5 +1,1 @@
-{
-  "users": [],
-  "categories": [],
-  "campaigns": []
-}
+{"users":[{"id":1,"name":"Phan Ngọc Linh Duy","password":"$2b$10$jpKgUv64Ah099bnpMWGp3OPP1nAgXjEXqlhT4NLg.0cR4Q2NcOYBO","email":"duypnl219@gmail.com","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IlBoYW4gTmfhu41jIExpbmggRHV5IiwiaWF0IjoxNjgwNzcwMzM2LCJleHAiOjE2ODA5NDMxMzZ9.hjwhawETYH3gOcQwBStsQpAYYAYNxmOnpnIR46BoZ4o"},{"id":2,"name":"Duy ","password":"$2b$10$vgfzsjDT7NcsA33KSqh3XuWEpd4qmqqsu0QccXiK.IGDBaxXOAd8C","email":"duy123@gmail.com","refreshToken":null},{"id":3,"name":"Phan Ngọc Linh Duy","password":"$2b$10$Qd5hKzZDI4Ky8RlLDnrBA.4EV6bNz/0lXy2/G1I0QCszUmwI3eIEG","email":"linhduy219@gmail.com","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6IlBoYW4gTmfhu41jIExpbmggRHV5IiwiaWF0IjoxNjgwNzcwMzM2LCJleHAiOjE2ODA5NDMxMzZ9.hjwhawETYH3gOcQwBStsQpAYYAYNxmOnpnIR46BoZ4o"}],"categories":[],"campaigns":[]}

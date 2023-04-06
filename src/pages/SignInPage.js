@@ -11,6 +11,8 @@ import LayoutAuthentication from "../layout/LayoutAuthentication";
 import useToggleValue from "../hooks/useToggleValue";
 import { IconEyesToggle } from "../components/icon";
 import { Button } from "../components/button";
+import { useDispatch } from "react-redux";
+import { authLogin } from "../store/auth/auth-slice";
 
 const schema = yup.object({
   email: yup.string().email("").required("This field is required"),
@@ -20,9 +22,10 @@ const schema = yup.object({
     .required("This field is required "),
 });
 
-const SingInPage = () => {
+const SignInpage = () => {
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
     useToggleValue();
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -32,13 +35,13 @@ const SingInPage = () => {
     mode: "onSubmit",
   });
   const handleSignIn = (values) => {
-    console.log(values);
+    dispatch(authLogin(values));
   };
   return (
     <LayoutAuthentication heading="Welcome Back!">
       <p className="mb-6 text-xs font-normal text-center lg:text-sm text-text3 lg:mb-8">
         Dont have an account?{" "}
-        <Link to="/sign-up" className="font-medium underline text-primary">
+        <Link to="/register" className="font-medium underline text-primary">
           Sign up
         </Link>
       </p>
@@ -84,4 +87,4 @@ const SingInPage = () => {
   );
 };
 
-export default SingInPage;
+export default SignInpage;

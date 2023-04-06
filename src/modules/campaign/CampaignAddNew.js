@@ -14,13 +14,39 @@ import { toast } from "react-toastify";
 
 import useOnChange from "../../hooks/useOnChange";
 import DatePicker from "react-date-picker";
+import { apiURL, imgbbAPI } from "../../config/config";
+import ImageUpload from "../../components/image/ImageUpload";
 Quill.register("modules/imageUploader", ImageUploader);
+
+const categoriesData = ["architecture", "education"];
 
 const CampaignAddNew = () => {
   const [content, setContent] = useState("");
   const [countries, setCountries] = useState([]);
-  const { handleSubmit, control, setValue } = useForm();
-  const handleAddNewCampaign = (values) => {};
+  const { handleSubmit, control, setValue, reset, watch } = useForm();
+  const getValueLabel = (name, defaultValue = "") => {
+    const value = watch(name) || defaultValue;
+    return value;
+  };
+  const resetValues = () => {
+    setStartDate("");
+    setEndDate("");
+    reset({});
+  };
+  const handleAddNewCampaign = async (values) => {
+    try {
+      await axios.post(`${apiURL}/campaigns`, {
+        ...values,
+        content,
+        startDate,
+        endDate,
+      });
+      toast.success("Create successfully");
+      resetValues();
+    } catch (error) {
+      toast.error("Can't not create new campagin");
+    }
+  };
   const modules = useMemo(
     () => ({
       toolbar: [
@@ -34,19 +60,17 @@ const CampaignAddNew = () => {
       imageUploader: {
         // imgbbAPI
         upload: async (file) => {
-          // console.log("upload: ~ file", file);
-          // const bodyFormData = new FormData();
-          // console.log("upload: ~ bodyFormData", bodyFormData);
-          // bodyFormData.append("image", file);
-          // const response = await axios({
-          //   method: "post",
-          //   url: imgbbAPI,
-          //   data: bodyFormData,
-          //   headers: {
-          //     "Content-Type": "multipart/form-data",
-          //   },
-          // });
-          // return response.data.data.url;
+          const bodyFormData = new FormData();
+          bodyFormData.append("image", file);
+          const response = await axios({
+            method: "post",
+            url: imgbbAPI,
+            data: bodyFormData,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          return response.data.data.url;
         },
       },
     }),
@@ -94,16 +118,20 @@ const CampaignAddNew = () => {
             <FormGroup>
               <Label>Select a category *</Label>
               <Dropdown>
-                <Dropdown.Select placeholder="Select a category"></Dropdown.Select>
-                <Dropdown.List placeholder="Select a category">
-                  <Dropdown.Option
-                    onClick={() =>
-                      handleSelectDropdownOption("category", "architecture ")
-                    }
-                  >
-                    Architecture
-                  </Dropdown.Option>
-                  <Dropdown.Option>Crypto</Dropdown.Option>
+                <Dropdown.Select
+                  className="capitalize"
+                  placeholder={getValueLabel("category", "Select Category")}
+                ></Dropdown.Select>
+                <Dropdown.List>
+                  {categoriesData.map((category) => (
+                    <Dropdown.Option
+                      onClick={() =>
+                        handleSelectDropdownOption("category", category)
+                      }
+                    >
+                      <span className="capitalize"> {category}</span>
+                    </Dropdown.Option>
+                  ))}
                 </Dropdown.List>
               </Dropdown>
             </FormGroup>
@@ -126,6 +154,16 @@ const CampaignAddNew = () => {
               onChange={setContent}
             />
           </FormGroup>
+          <FormRow>
+            <FormGroup>
+              <Label>Featured Image</Label>
+              <ImageUpload
+                onChange={setValue}
+                name="feature_image"
+              ></ImageUpload>
+            </FormGroup>
+            <FormGroup></FormGroup>
+          </FormRow>
           <FormRow>
             <FormGroup>
               <Label>Goal *</Label>
@@ -176,7 +214,10 @@ const CampaignAddNew = () => {
             <FormGroup>
               <Label>Country</Label>
               <Dropdown>
-                <Dropdown.Select placeholder="Select a country"></Dropdown.Select>
+                <Dropdown.Select
+                  className="capitalize"
+                  placeholder={getValueLabel("country", "Select a country")}
+                ></Dropdown.Select>
                 <Dropdown.List>
                   <Dropdown.Search
                     placeholder="Search Country"
@@ -219,7 +260,10 @@ const CampaignAddNew = () => {
             </FormGroup>
           </FormRow>
           <div className="text-center mt-10">
-            <Button className="bg-primary text-white mx-auto px-10">
+            <Button
+              type="submit"
+              className="bg-primary text-white mx-auto px-10"
+            >
               Submit new campaign{" "}
             </Button>
           </div>

@@ -5,7 +5,7 @@ import LayoutDashboard from "./layout/LayoutDashboard";
 import LayoutPayment from "./layout/LayoutPayment";
 import ShippingPage from "./pages/ShippingPage";
 const SignUpPage = lazy(() => import("./pages/SignUpPage"));
-const SingInPage = lazy(() => import("./pages/SingInPage"));
+const SignInPage = lazy(() => import("./pages/SignInPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const CampaignPage = lazy(() => import("./pages/CampaignPage"));
 const StartCampaignPage = lazy(() => import("./pages/StartCampaignPage"));
@@ -50,8 +50,8 @@ function App() {
             element={<ShippingPage></ShippingPage>}
           ></Route>
         </Route>
-        <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
-        <Route path="/sign-in" element={<SingInPage></SingInPage>}></Route>
+        <Route path="/register" element={<SignUpPage></SignUpPage>}></Route>
+        <Route path="/login" element={<SignInPage></SignInPage>}></Route>
       </Routes>
     </Suspense>
   );
